@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { HelloWorldService } from "./Services/HelloWorldService";
 
 function App() {
+  const [greeting, setGreeting] = useState('Hi');
+
+  useEffect(() => {
+    setTimeout( () => {
+      setGreeting(HelloWorldService.getHelloWorld)
+    }, 5000);
+  });
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {greeting} World!!
         </p>
         <a
           className="App-link"
